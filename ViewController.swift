@@ -43,17 +43,17 @@ class ViewController: UIViewController {
 //                }
                 
                 // Search for nodes by XPath
-                for link in doc.xpath("//h1[@itemprop='name']") {
+                for link in doc.xpath("//h1[@itemprop='name']") {  // Вывод названия фильма
                     print(link.text)
-                    //print(link["href"])
                 }
-                for link in doc.xpath("//li[@itemprop='actors']") {
+                for link in doc.xpath("//li[@itemprop='actors']") { // Вывод актеров
                     print(link.text)
-                    //print(link["href"])
                 }
-                for link in doc.xpath("//div[@itemprop='description']") {
+                for link in doc.xpath("//div[@itemprop='description']") { // Вывод описания фильма
                     print(link.text)
-                    //print(link["href"])
+                }
+                for link in doc.xpath("//div/a/img[@itemprop='image']/@src") { // Вывод ссылки на изображение фильма
+                    print(link.text)
                 }
             }
         })
