@@ -23,11 +23,19 @@ class ViewController: UIViewController {
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera) // Инициализация гугл-карт
         view = mapView
         
-        let currentLocation = CLLocationCoordinate2DMake(59.926599, 30.320646) // Местоположение кинотеатра ПИК
-        let marker = GMSMarker(position: currentLocation)
+        var theatreLocations = [CLLocationCoordinate2D]() // Массив позиций кинотеатров
+        theatreLocations.append(CLLocationCoordinate2DMake(59.926599, 30.320646)) // Местоположение кинотеатра ПИК
+        theatreLocations.append(CLLocationCoordinate2DMake(59.914870, 30.348642)) // Местоположение кинотеатра 2
+        theatreLocations.append(CLLocationCoordinate2DMake(59.936259, 30.341750)) // Местоположение кинотеатра 3
+        theatreLocations.append(CLLocationCoordinate2DMake(59.879797, 30.265368)) // Местоположение кинотеатра 4
         
-        marker.title = "Кинотеатр ПИК"
-        marker.map = mapView
+        var markers = [GMSMarker]() // Массив маркеров кинотеатров на карте
+        for theatrePosition in theatreLocations{ // Заполнение маркеров
+            markers.append(GMSMarker(position: theatrePosition))
+            markers.last?.map = mapView
+        }
+        
+        markers[0].title = "Кинотеатр ПИК"
     }
 
     func displayURL(){
@@ -68,4 +76,3 @@ class ViewController: UIViewController {
     
 
 }
-
